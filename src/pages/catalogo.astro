@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/astro/Footer.astro';
+
+const projects = [
+  { title: "Proyecto Alpha", category: "Web Design" },
+  { title: "App Beta", category: "React Development" },
+  { title: "Dashboard Gamma", category: "Data Utils" },
+  { title: "Landing Delta", category: "Marketing" },
+];
+---
+
+<Layout title="Catálogo de Proyectos | Freelancer">
+	<main class="container mx-auto px-4 py-20 flex-grow">
+		<h1 class="text-4xl font-bold mb-4 text-center">Catálogo de Proyectos</h1>
+        <p class="text-center text-secondary mb-12 max-w-2xl mx-auto">Explora mis trabajos más recientes y destacados.</p>
+
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+			{projects.map((project) => (
+				<div class="group bg-surface rounded-xl overflow-hidden border border-secondary/20 hover:border-accent transition-all hover:shadow-lg hover:shadow-accent/10">
+                    <div class="h-48 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
+                        <span class="text-4xl">🚀</span>
+                    </div>
+                    <div class="p-6">
+					    <h3 class="text-xl font-bold mb-2 group-hover:text-accent transition-colors">{project.title}</h3>
+					    <span class="text-xs font-semibold px-2 py-1 rounded-full bg-secondary/10 text-secondary">{project.category}</span>
+                    </div>
+				</div>
+			))}
+		</div>
+        
+        <div class="mt-12 text-center">
+            <a href="/" class="text-accent hover:underline">← Volver al inicio</a>
+        </div>
+	</main>
+    <Footer />
+</Layout>
