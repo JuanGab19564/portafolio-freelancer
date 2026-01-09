@@ -9,29 +9,40 @@ import ColorPicker from '../components/react/ColorPicker';
 	<main class="container mx-auto px-4 flex-grow">
 		<Hero />
 		
-		<div class="my-20">
-			<h2 class="text-3xl font-bold mb-8 text-center">Laboratorio de Colores</h2>
-			<p class="text-center text-secondary mb-8">Prueba cómo cambia el color de acento en tiempo real.</p>
-			<div class="flex justify-center">
+		<div id="styles-lab" className="my-32 relative">
+            <div class="absolute inset-x-0 top-1/2 -translate-y-1/2 h-px bg-gradient-to-r from-transparent via-secondary/20 to-transparent -z-10"></div>
+			<div class="flex justify-center relative">
+                <div class="absolute inset-0 bg-accent/5 blur-[100px] rounded-full"></div>
 				<ColorPicker client:visible />
 			</div>
 		</div>
 
-        <section id="services" class="py-20">
-            <h2 class="text-3xl font-bold mb-10 text-center">Lo que hago</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="p-6 bg-surface rounded-lg border border-secondary/20">
-                    <h3 class="text-xl font-bold mb-2 text-accent">Desarrollo Web</h3>
-                    <p class="text-secondary">Sitios rápidos y optimizados con Astro.</p>
-                </div>
-                 <div class="p-6 bg-surface rounded-lg border border-secondary/20">
-                    <h3 class="text-xl font-bold mb-2 text-accent">Aplicaciones React</h3>
-                    <p class="text-secondary">Interfaces interactivas y dinámicas.</p>
-                </div>
-                 <div class="p-6 bg-surface rounded-lg border border-secondary/20">
-                    <h3 class="text-xl font-bold mb-2 text-accent">Diseño UI/UX</h3>
-                    <p class="text-secondary">Experiencias centradas en el usuario.</p>
-                </div>
+        <section id="services" class="py-32 relative">
+            <h2 class="text-4xl md:text-5xl font-bold mb-16 text-center">
+                <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Lo que hago</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {[
+                    { title: 'Desarrollo Web', icon: '💻', desc: 'Sitios ultra-rápidos construidos con Astro y optimizados para SEO.' },
+                    { title: 'Aplicaciones React', icon: '⚛️', desc: 'Interfaces modernas, reactivas y totalmente escalables.' },
+                    { title: 'Diseño UI/UX', icon: '🎨', desc: 'Experiencias de usuario intuitivas y visualmente impactantes.' }
+                ].map(service => (
+                    <div class="group p-8 bg-surface rounded-2xl border border-secondary/10 hover:border-accent/50 hover:shadow-[0_10px_40px_-10px_var(--accent)] hover:-translate-y-2 transition-all duration-300 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity text-6xl select-none grayscale group-hover:grayscale-0">
+                            {service.icon}
+                        </div>
+                        <div class="text-4xl mb-6 bg-background w-16 h-16 rounded-2xl flex items-center justify-center border border-secondary/20 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 shadow-lg">
+                            {service.icon}
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-primary group-hover:text-accent transition-colors">
+                            {service.title}
+                        </h3>
+                        <p class="text-secondary leading-relaxed">
+                            {service.desc}
+                        </p>
+                    </div>
+                ))}
             </div>
         </section>
 	</main>
